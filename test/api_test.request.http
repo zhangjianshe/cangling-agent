@@ -1,0 +1,3 @@
+### GET request to localhsot
+GET http://localhost:6969/api/v1/version
+###

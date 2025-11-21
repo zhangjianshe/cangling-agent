@@ -1,0 +1,60 @@
+syntax = "proto3";
+
+package agent;
+
+option go_package = "./agent";
+
+service AgentService {
+  rpc GetVersion(Empty) returns (VersionResponse);
+
+  rpc ListTasks(Empty) returns (ListTasksResponse);
+
+  rpc StartTask(StartTaskRequest) returns (StartTaskResponse);
+
+  rpc StopTask(StopTaskRequest) returns (StopTaskResponse);
+
+  rpc StreamLogs(StreamLogsRequest) returns (stream LogChunk);
+}
+
+message Empty {}
+
+message VersionResponse {
+  string version = 1;
+}
+
+message ListTasksResponse {
+  // Contains the raw output of 'docker ps -a'
+  string output = 1;
+}
+
+message StartTaskRequest {
+  string name = 1;
+  string image = 2;
+  string id = 3;
+  repeated int32 gpus = 4;
+  int32 memory_mb = 5;
+  repeated string volumes = 6;
+  repeated string envs = 7;
+}
+
+message StartTaskResponse {
+  string container_id = 1;
+  string message = 2;
+}
+
+message StopTaskRequest {
+  string name = 1;
+}
+
+message StopTaskResponse {
+  string message = 1;
+}
+
+message StreamLogsRequest {
+  string name = 1;
+}
+
+message LogChunk {
+  // Raw log data bytes
+  bytes data = 1;
+}
