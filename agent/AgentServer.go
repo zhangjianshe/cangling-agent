@@ -143,7 +143,6 @@ func (s *GrpcServer) StreamLogs(req *StreamLogsRequest, stream AgentService_Stre
 	if targetName == "" {
 		targetName = "agent-test"
 	}
-
 	// 1. Send initialization message
 	initMsg := fmt.Sprintf("--- Log Stream Initialized for '%s' ---\n", targetName)
 	if err := stream.Send(&LogChunk{Data: []byte(initMsg)}); err != nil {

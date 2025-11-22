@@ -1,2 +1,5 @@
 main
 *.pb.go
+target
+cangling-agent
+config.toml
