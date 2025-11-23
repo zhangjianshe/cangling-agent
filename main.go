@@ -28,7 +28,7 @@ type CanglingServer struct {
 	LatestVersion string `json:"latestVersion"`
 }
 
-var AppVersion = "1.0.9"              // Current application version
+var AppVersion = "1.0.10"              // Current application version
 var BuildTime = "2006-01-02 15:04:05" // Build timestamp in milliseconds (UTC) injected by build script
 var GitHash = "unknown"               // Git hash injected by build script
 var canglingServer = CanglingServer{  // Use api.CanglingServer from the api package
