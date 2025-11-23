@@ -131,3 +131,64 @@ jobs:
         env:
           # Use the default GITHUB_TOKEN for authentication
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: upload to soft.cangling.cn
+        env:
+          UPLOAD_TOKEN: ${{ secrets.CANGLING_TOKEN }}
+          UPLOAD_URL: 'https://soft.cangling.cn/api/v1/software/upload'
+          run: |
+            FILE_NAME=bin/agent-linux-amd64
+            # Ensure your release file exists
+            if [ ! -f $FILE_NAME ]; then
+              echo "Release file $FILE_NAME not found!"
+              exit 1
+            fi
+            
+            echo "Starting file upload..."
+            
+            # The curl command structure:
+            # -X POST: HTTP method for upload
+            # -H "Authorization: Bearer ...": Header for authentication (replace with your server's required auth)
+            # -F "file=@$FILE_NAME": Specifies a multipart/form-data upload, reading data from the file.
+            # -F "tag=${{ github.event.release.tag_name }}": Additional form-data field for metadata.
+            # -s -S: Silent mode, but show errors
+            curl -sS \
+              -X POST \
+              -F "file=@$FILE_NAME" \
+              -F "token=${{ secrets.CANGLING_TOKEN }}" \
+              -F "name=agent-linux-amd64" \
+              -F "os=linux" \
+              -F "arch=amd64" \
+              -F "version=${{ steps.get_tag_version.outputs.TAG_VERSION }}" \
+              
+              "$UPLOAD_URL"
+            
+            echo "Upload amd complete."
+            
+            FILE_NAME=bin/agent-linux-arm64
+            # Ensure your release file exists
+            if [ ! -f $FILE_NAME ]; then
+              echo "Release file $FILE_NAME not found!"
+              exit 1
+            fi
+
+            echo "Starting file upload..."
+
+            # The curl command structure:
+            # -X POST: HTTP method for upload
+            # -H "Authorization: Bearer ...": Header for authentication (replace with your server's required auth)
+            # -F "file=@$FILE_NAME": Specifies a multipart/form-data upload, reading data from the file.
+            # -F "tag=${{ github.event.release.tag_name }}": Additional form-data field for metadata.
+            # -s -S: Silent mode, but show errors
+            curl -sS \
+              -X POST \
+              -F "file=@$FILE_NAME" \
+              -F "token=${{ secrets.CANGLING_TOKEN }}" \
+              -F "name=agent-linux-arm64" \
+              -F "os=linux" \
+              -F "arch=arm64" \
+              -F "version=${{ steps.get_tag_version.outputs.TAG_VERSION }}" \
+
+              "$UPLOAD_URL"
+
+            echo "Upload complete."
