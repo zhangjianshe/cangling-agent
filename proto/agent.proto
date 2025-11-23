@@ -3,6 +3,7 @@ syntax = "proto3";
 package agent;
 
 option go_package = "./agent";
+option java_package ="cn.mapway.agent.client";
 
 service AgentService {
   rpc GetVersion(Empty) returns (VersionResponse);
