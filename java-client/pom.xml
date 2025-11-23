@@ -72,11 +72,11 @@
         </plugins>
     </build>
 
-    <!-- Where to push the snapshot version -->
+    <!--&lt;!&ndash; Where to push the snapshot version &ndash;&gt;
     <distributionManagement>
         <snapshotRepository>
-            <id>central-snapshots</id> <!-- Matches <server> in ~/.m2/settings.xml -->
+            <id>central-snapshots</id> &lt;!&ndash; Matches <server> in ~/.m2/settings.xml &ndash;&gt;
             <url>https://your-repo-url/repository/maven-snapshots/</url>
         </snapshotRepository>
-    </distributionManagement>
+    </distributionManagement>-->
 </project>
