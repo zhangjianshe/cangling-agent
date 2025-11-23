@@ -72,11 +72,14 @@
         </plugins>
     </build>
 
-    <!--&lt;!&ndash; Where to push the snapshot version &ndash;&gt;
     <distributionManagement>
         <snapshotRepository>
-            <id>central-snapshots</id> &lt;!&ndash; Matches <server> in ~/.m2/settings.xml &ndash;&gt;
-            <url>https://your-repo-url/repository/maven-snapshots/</url>
+            <id>central</id>
+            <url>https://ossrh.sonatype.org/content/repositories/snapshots/</url>
         </snapshotRepository>
-    </distributionManagement>-->
+        <repository>
+            <id>central</id>
+            <url>https://ossrh.sonatype.org/service/local/staging/deploy/maven2/</url>
+        </repository>
+    </distributionManagement>
 </project>
