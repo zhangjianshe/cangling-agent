@@ -11,10 +11,10 @@ NEW_PATCH=$((PATCH + 1))
 NEW_VERSION="${MAJOR}.${MINOR}.${NEW_PATCH}"
 
 # Update version in main.go
-sed -i "s/var AppVersion = \"${CURRENT_VERSION}\"/var AppVersion = \"${NEW_VERSION}\"/" main.go
+sed -i "s/var AppVersion = \"${CURRENT_VERSION}\"/var AppVersion = \"${NEW_VERSION}\"/" ./main.go
 
 # Commit changes
-git add main.go
+git add ./main.go
 git commit -m "Bump version to ${NEW_VERSION}"
 
 # Push changes
