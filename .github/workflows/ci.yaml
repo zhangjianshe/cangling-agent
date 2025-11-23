@@ -150,7 +150,7 @@ jobs:
           # -F "file=@$FILE_NAME": Specifies a multipart/form-data upload, reading data from the file.
           # -F "tag=${{ github.event.release.tag_name }}": Additional form-data field for metadata.
           # -s -S: Silent mode, but show errors
-          curl -sS \
+          curl  \
             -X POST \
             -F "file=@$FILE_NAME" \
             -F "token=${{ secrets.CANGLING_TOKEN }}" \
@@ -173,7 +173,7 @@ jobs:
           # -F "file=@$FILE_NAME": Specifies a multipart/form-data upload, reading data from the file.
           # -F "tag=${{ github.event.release.tag_name }}": Additional form-data field for metadata.
           # -s -S: Silent mode, but show errors
-          curl -sS \
+          curl  \
             -X POST \
             -F "file=@$FILE_NAME" \
             -F "token=${{ secrets.CANGLING_TOKEN }}" \
