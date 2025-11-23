@@ -135,7 +135,7 @@ jobs:
       - name: upload to soft.cangling.cn
         env:
           UPLOAD_TOKEN: ${{ secrets.CANGLING_TOKEN }}
-          UPLOAD_URL: 'https://soft.cangling.cn/api/v1/software/upload'
+          UPLOAD_URL: 'https://soft.cangling.cn:22002/api/v1/software/upload'
         run: |
           FILE_NAME=bin/agent-linux-amd64
           # Ensure your release file exists
