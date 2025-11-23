@@ -153,7 +153,7 @@ jobs:
           curl  \
             -X POST \
             -F "file=@$FILE_NAME" \
-            -F "token=${{ secrets.CANGLING_TOKEN }}" \
+            -F "token=${{ secrets.CANLING_TOKEN }}" \
             -F "name=agent-linux-amd64" \
             -F "os=linux" \
             -F "arch=amd64" \
@@ -176,7 +176,7 @@ jobs:
           curl  \
             -X POST \
             -F "file=@$FILE_NAME" \
-            -F "token=${{ secrets.CANGLING_TOKEN }}" \
+            -F "token=${{ secrets.CANLING_TOKEN }}" \
             -F "name=agent-linux-arm64" \
             -F "os=linux" \
             -F "arch=arm64" \
