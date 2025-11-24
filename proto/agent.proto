@@ -36,11 +36,13 @@ message StartTaskRequest {
   int32 memory_mb = 5;
   repeated string volumes = 6;
   repeated string envs = 7;
+  repeated string labels =8;
 }
 
 message StartTaskResponse {
   string container_id = 1;
   string message = 2;
+  int32  code=3;
 }
 
 message StopTaskRequest {
